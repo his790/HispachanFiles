@@ -16,7 +16,7 @@ var searchRoutes = require('./routes/search');
 
 var settings = require('./settings');
 var serverSettings = require('./server-settings');
-
+mongoose.Promise = global.Promise;
 var app = express();
 
 // Socket.io
@@ -24,7 +24,7 @@ var io           = socket_io();
 app.io           = io;
 
 // Mongoose
-mongoose.connect(serverSettings.db.url);
+mongoose.connect(serverSettings.db.url, {useMongoClient: true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

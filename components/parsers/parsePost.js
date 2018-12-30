@@ -24,7 +24,11 @@ function postMeta(post, $) {
         
     // Fecha y Hora
     let dateRe    = /(\d{1,2})\/(\d{1,2})\/(\d{1,2}) (\d{1,2}):(\d{1,2})/;
-    let dateParts = post.find('[title*="Horario"]').first().text().trim().match(dateRe);
+    //let dateParts = post.find('[title*="Horario"]').first().text().trim().match(dateRe);
+    //Nueva forma de buscar la fecha en hispachanGold
+    let daf =post.find('span.timer').first()[0].children[0].attribs;
+    let key =Object.keys(daf);
+    let dateParts = daf[key[1]].trim().match(dateRe);
     let date      = new Date(Date.UTC(
         parseInt('20' + dateParts[3]),
         parseInt(dateParts[2]) -1,
@@ -32,6 +36,7 @@ function postMeta(post, $) {
         parseInt(dateParts[4]),
         parseInt(dateParts[5])
     ));
+//let date      = new Date("11/20/2014 04:11");
     data.date = date;
     
     // Nuevo dado [Abril 2016]

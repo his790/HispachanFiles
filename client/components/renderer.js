@@ -30,6 +30,8 @@ export default function renderPostMessage(text)
     });
     // textoverde :^)
     text = text.replace(/^\>([^\>\n].+)$/gm, '<span class="unkfunc">&gt;$1</span>');
+    // textredtext :^)
+    text = text.replace(/[\<\w\s]\<.+)$/gm, '<span class="redtext">&lt;$1</span>');
     // Saltos de línea
     text = text.replace(/\n/g, "<br />");
     

@@ -43,12 +43,12 @@ class HispachanFiles {
             if(that.data.archiver.working) return;
             let archiver = new Archiver(that.data.archiver.url, that);
             archiver.start();
-        })
+        });
         
         $('#threadSearch').search({
             apiSettings: {
                 url: '/ui-search?q={query}'
-            },
+            
             type: 'standard'
         });
         
