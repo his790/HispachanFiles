@@ -48,7 +48,7 @@ class HispachanFiles {
         $('#threadSearch').search({
             apiSettings: {
                 url: '/ui-search?q={query}'
-            
+            },
             type: 'standard'
         });
         

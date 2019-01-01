@@ -31,7 +31,16 @@ export default function renderPostMessage(text)
     // textoverde :^)
     text = text.replace(/^\>([^\>\n].+)$/gm, '<span class="unkfunc">&gt;$1</span>');
     // textredtext :^)
-    text = text.replace(/[\<\w\s]\<.+)$/gm, '<span class="redtext">&lt;$1</span>');
+    //text = text.replace(/^\<([^\<\s\n].+)$/gm, '<span class="redtext">&lt;$1</span>');
+    text = text.replace(/^\<([^\<\n].+)$/gm, ref=>{
+        var str='';
+        str=ref;
+        if( str.indexOf('>') == -1){
+            var a = str.substr(1,str.length);
+            ref='<span class="redtext">&lt;'+a+'</span>';
+        }
+        return ref;
+    });
     // Saltos de línea
     text = text.replace(/\n/g, "<br />");
     
